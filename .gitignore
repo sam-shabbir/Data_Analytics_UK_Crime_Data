@@ -24,6 +24,9 @@ data/processed/*
 outputs/*
 !outputs/.gitkeep
 
+# --- Local tool settings ---
+.claude/
+
 # --- OS / editor cruft ---
 .DS_Store
 Thumbs.db
