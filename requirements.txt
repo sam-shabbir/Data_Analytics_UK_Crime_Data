@@ -1,0 +1,18 @@
+# Top-level dependencies for this project.
+# These are the packages WE ask for directly; pip pulls in their dependencies.
+#
+# Workflow note: after we install these into the virtual environment, we'll run
+#   pip freeze > requirements-lock.txt
+# to capture the EXACT versions (including sub-dependencies) for full
+# reproducibility. This file stays human-readable; the lock file is the receipt.
+
+pandas          # the core table/dataframe library — our main workhorse
+numpy           # numerical arrays; pandas is built on top of it
+matplotlib      # plotting
+seaborn         # nicer statistical charts on top of matplotlib
+jupyterlab      # notebook environment for exploration
+ipykernel       # lets the venv show up as a Jupyter kernel
+
+# --- Geospatial (add later, when we start mapping) ---
+# geopandas     # dataframes with geometry — for borough/LSOA maps
+# folium        # interactive Leaflet maps

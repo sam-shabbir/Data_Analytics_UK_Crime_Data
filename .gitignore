@@ -1,0 +1,31 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- Virtual environment ---
+# We never commit the venv itself — it's big and machine-specific.
+# Reproducibility comes from requirements.txt instead.
+.venv/
+venv/
+
+# --- Data ---
+# Raw/processed data can be large and is re-downloadable, so we keep it
+# OUT of git. The code that produces it IS tracked, which is what matters.
+# (Remove these two lines later if you decide to version small sample files.)
+data/raw/*
+data/processed/*
+# ...but keep the folders themselves around:
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# --- Outputs ---
+# Generated figures/tables — reproducible from code, so not tracked by default.
+outputs/*
+!outputs/.gitkeep
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
