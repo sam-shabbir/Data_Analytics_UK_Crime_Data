@@ -26,6 +26,7 @@ outputs/*
 
 # --- Local tool settings ---
 .claude/
+anaconda_projects/
 
 # --- OS / editor cruft ---
 .DS_Store
