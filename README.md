@@ -13,11 +13,16 @@ data from the UK police, joined with deprivation and population data.
 | Source | What it gives us | Link |
 |--------|------------------|------|
 | data.police.uk | Street-level crime by month + LSOA | https://data.police.uk/data/ |
+| ONS population estimates (mid-2024) | Population per London borough, for per-capita rates | https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland |
 | ONS / Index of Multiple Deprivation | Deprivation score per LSOA (added later) | https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019 |
-| ONS population estimates | Population per LSOA/borough for per-capita rates (added later) | https://www.ons.gov.uk/ |
 
-**Data is not stored in git** (see `.gitignore`). To reproduce, download the
-raw data into `data/raw/` — see notes in `notebooks/`.
+**Data is not stored in git** (see `.gitignore`). To reproduce:
+
+- **Crime data**: use the custom download at https://data.police.uk/data/ —
+  select "Metropolitan Police Service" and a date range, extract the monthly
+  CSVs into `data/raw/london/<year-month>/`.
+- **Population data**: download the "mid-2024" xlsx from the ONS link above
+  and save it as `data/raw/population/mye24tablesuk.xlsx`.
 
 ## Project structure
 
