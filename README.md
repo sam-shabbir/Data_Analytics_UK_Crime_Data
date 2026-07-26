@@ -11,19 +11,17 @@ one's findings carry over to the other, followed by a direct comparison.
 > How does crime vary across a police force's boroughs/districts, and how
 > much of that variation tracks with deprivation and population?
 
-## Data sources cover both London and West Mercia
+## Data sources
 
 Every source below is England-wide (not London-specific), so the same raw
 files serve both analyses — only the filtered-to name set differs
 (`clean.LONDON_BOROUGHS` vs. `clean.WEST_MERCIA_DISTRICTS`).
 
-## Data sources
-
 | Source | What it gives us | Link |
 |--------|------------------|------|
 | data.police.uk | Street-level crime by month + LSOA | https://data.police.uk/data/ |
-| ONS population estimates (mid-2024) | Population per London borough, for per-capita rates | https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland |
-| MHCLG Index of Multiple Deprivation 2019 (File 10, borough summaries) | Deprivation score per London borough | https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019 |
+| ONS population estimates (mid-2024) | Population per borough/district, for per-capita rates | https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland |
+| MHCLG Index of Multiple Deprivation 2019 (File 10, local authority summaries) | Deprivation score per borough/district | https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019 |
 | ONS local authority district boundaries (via UK-GeoJSON mirror) | Borough/district shapes, for maps | https://github.com/martinjc/UK-GeoJSON |
 
 **Data is not stored in git** (see `.gitignore`). To reproduce:
@@ -49,8 +47,8 @@ data/
   processed/         # cleaned/derived data our code produces
 notebooks/
   london/            # Metropolitan Police analysis (01-05)
-  west-mercia/       # independent West Mercia analysis (parallel structure)
-  comparison/        # London vs. West Mercia, once both stand on their own
+  west-mercia/       # independent West Mercia analysis (01-05, same structure)
+  comparison/        # 01_london_vs_westmercia.ipynb — direct comparison
 src/                 # reusable Python (cleaning functions, helpers)
 outputs/             # figures, maps, and exported tables
 ```
