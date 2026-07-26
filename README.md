@@ -6,6 +6,8 @@ deprivation and population data. Two independent analyses so far — London
 Wrekin, Worcestershire) — each run the same way but without assuming either
 one's findings carry over to the other, followed by a direct comparison.
 
+**→ See [REPORT.md](REPORT.md) for the written summary of findings.**
+
 ## Question we're starting with
 
 > How does crime vary across a police force's boroughs/districts, and how
