@@ -15,6 +15,7 @@ data from the UK police, joined with deprivation and population data.
 | data.police.uk | Street-level crime by month + LSOA | https://data.police.uk/data/ |
 | ONS population estimates (mid-2024) | Population per London borough, for per-capita rates | https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland |
 | MHCLG Index of Multiple Deprivation 2019 (File 10, borough summaries) | Deprivation score per London borough | https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019 |
+| ONS local authority district boundaries (via UK-GeoJSON mirror) | Borough/district shapes, for maps | https://github.com/martinjc/UK-GeoJSON |
 
 **Data is not stored in git** (see `.gitignore`). To reproduce:
 
@@ -26,16 +27,22 @@ data from the UK police, joined with deprivation and population data.
 - **Deprivation data**: from the gov.uk link above, download "File 10:
   Local Authority District Summaries (lower-tier)" and save it as
   `data/raw/deprivation/File_10_LAD_summaries.xlsx`.
+- **Boundary data**: download
+  `json/administrative/eng/lad.json` from the GitHub repo above and save it
+  as `data/raw/geography/england_lad.geojson`.
 
 ## Project structure
 
 ```
 data/
-  raw/         # original, immutable downloads — NEVER edit by hand
-  processed/   # cleaned/derived data our code produces
-notebooks/     # Jupyter notebooks for exploration & analysis
-src/           # reusable Python (cleaning functions, helpers)
-outputs/       # figures and exported tables
+  raw/               # original, immutable downloads — NEVER edit by hand
+  processed/         # cleaned/derived data our code produces
+notebooks/
+  london/            # Metropolitan Police analysis (01-05)
+  west-mercia/       # independent West Mercia analysis (parallel structure)
+  comparison/        # London vs. West Mercia, once both stand on their own
+src/                 # reusable Python (cleaning functions, helpers)
+outputs/             # figures, maps, and exported tables
 ```
 
 ## Setup
