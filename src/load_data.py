@@ -40,3 +40,23 @@ def load_force_data(force: str) -> pd.DataFrame:
     # ignore_index=True renumbers rows 0..N instead of repeating each
     # month's own 0..N index.
     return pd.concat(frames, ignore_index=True)
+
+
+def load_borough_population() -> pd.DataFrame:
+    """Load ONS mid-2024 population estimates for the 33 London boroughs.
+
+    Source: ONS "Population estimates for England and Wales: mid-2024" —
+    sheet "MYE2 - Persons" holds population by single year of age for every
+    UK local authority; we only need the "All ages" total, and only the
+    rows tagged Geography == "London Borough" (which includes the City of
+    London, despite the name).
+    """
+    path = RAW_DATA_DIR / "population" / "mye24tablesuk.xlsx"
+
+    # header=7 tells pandas the real column headers are on the 8th row
+    # (0-indexed row 7) of the sheet — the rows above it are ONS cover
+    # notes, not data.
+    df = pd.read_excel(path, sheet_name="MYE2 - Persons", header=7)
+
+    boroughs = df[df["Geography"] == "London Borough"][["Name", "All ages"]]
+    return boroughs.rename(columns={"Name": "Borough", "All ages": "Population"})

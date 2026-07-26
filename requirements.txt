@@ -12,6 +12,7 @@ matplotlib      # plotting
 seaborn         # nicer statistical charts on top of matplotlib
 jupyterlab      # notebook environment for exploration
 ipykernel       # lets the venv show up as a Jupyter kernel
+openpyxl        # lets pandas read .xlsx files (e.g. ONS population data)
 
 # --- Geospatial (add later, when we start mapping) ---
 # geopandas     # dataframes with geometry — for borough/LSOA maps
