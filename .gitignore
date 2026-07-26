@@ -23,6 +23,10 @@ data/processed/*
 # Generated figures/tables — reproducible from code, so not tracked by default.
 outputs/*
 !outputs/.gitkeep
+# Exception: figures embedded in REPORT.md need to actually render for
+# anyone reading the report without rerunning every notebook first.
+!outputs/report/
+!outputs/report/*.png
 
 # --- Local tool settings ---
 .claude/
