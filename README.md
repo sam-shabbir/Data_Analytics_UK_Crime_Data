@@ -1,12 +1,21 @@
 # UK Crime Data Analysis
 
-Exploring recorded crime across London (and, later, other UK cities) using open
-data from the UK police, joined with deprivation and population data.
+Exploring recorded crime in the UK using open police data, joined with
+deprivation and population data. Two independent analyses so far — London
+(Metropolitan Police) and West Mercia (Herefordshire, Shropshire, Telford and
+Wrekin, Worcestershire) — each run the same way but without assuming either
+one's findings carry over to the other, followed by a direct comparison.
 
 ## Question we're starting with
 
-> How does crime vary across London's boroughs, and how much of that variation
-> tracks with deprivation and population?
+> How does crime vary across a police force's boroughs/districts, and how
+> much of that variation tracks with deprivation and population?
+
+## Data sources cover both London and West Mercia
+
+Every source below is England-wide (not London-specific), so the same raw
+files serve both analyses — only the filtered-to name set differs
+(`clean.LONDON_BOROUGHS` vs. `clean.WEST_MERCIA_DISTRICTS`).
 
 ## Data sources
 
@@ -20,8 +29,9 @@ data from the UK police, joined with deprivation and population data.
 **Data is not stored in git** (see `.gitignore`). To reproduce:
 
 - **Crime data**: use the custom download at https://data.police.uk/data/ —
-  select "Metropolitan Police Service" and a date range, extract the monthly
-  CSVs into `data/raw/london/<year-month>/`.
+  select "Metropolitan Police Service" (or "West Mercia Police") and a date
+  range, extract the monthly CSVs into `data/raw/london/<year-month>/` (or
+  `data/raw/west-mercia/<year-month>/`).
 - **Population data**: download the "mid-2024" xlsx from the ONS link above
   and save it as `data/raw/population/mye24tablesuk.xlsx`.
 - **Deprivation data**: from the gov.uk link above, download "File 10:
