@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import geopandas as gpd
 import pandas as pd
 
 from clean import LONDON_BOROUGHS
@@ -108,3 +109,31 @@ def load_borough_deprivation() -> pd.DataFrame:
     # load_borough_population(), rather than relying on a caller to
     # filter it later.
     return combined[combined["Borough"].isin(LONDON_BOROUGHS)].reset_index(drop=True)
+
+
+def load_lad_boundaries(names: set[str], name_column: str = "Borough") -> gpd.GeoDataFrame:
+    """Load local authority district boundary polygons for a given set of names.
+
+    Source: ONS local authority district boundaries (2013 vintage), mirrored
+    as GeoJSON by the community "UK-GeoJSON" project. 2013 boundaries are
+    fine for our purposes: none of the local authorities we work with
+    (London boroughs, West Mercia's districts) have changed boundaries
+    since then.
+
+    `names` filters the ~326 England-wide districts down to just the ones
+    you want (e.g. `clean.LONDON_BOROUGHS`) — a general-purpose function,
+    not London-specific, so the same code will serve the West Mercia map
+    later. `name_column` lets the output column match whatever you're
+    merging it against (e.g. "Borough" for London, "District" for West
+    Mercia), instead of hard-coding one name for every use.
+    """
+    path = RAW_DATA_DIR / "geography" / "england_lad.geojson"
+
+    # geopandas' read_file works like pd.read_csv, but understands
+    # geographic file formats (GeoJSON, Shapefile, ...) and returns a
+    # GeoDataFrame -- a regular DataFrame plus a "geometry" column holding
+    # each row's shape.
+    gdf = gpd.read_file(path)
+    gdf = gdf.rename(columns={"LAD13NM": name_column})
+
+    return gdf[gdf[name_column].isin(names)][[name_column, "geometry"]].reset_index(drop=True)
