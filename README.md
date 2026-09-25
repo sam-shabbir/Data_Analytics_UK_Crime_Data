@@ -1,12 +1,31 @@
-# UK Crime Data Analysis
+# 🚓 UK Crime Analysis: London vs West Mercia
 
-Exploring recorded crime in the UK using open police data, joined with
-deprivation and population data. Two independent analyses so far — London
-(Metropolitan Police) and West Mercia (Herefordshire, Shropshire, Telford and
-Wrekin, Worcestershire) — each run the same way but without assuming either
-one's findings carry over to the other, followed by a direct comparison.
+**1.35 million street-level police records (May 2025 – May 2026), joined with population and deprivation data** to ask how crime varies between areas, and why.
 
-**→ See [REPORT.md](REPORT.md) for the written summary of findings.**
+`Python` · `pandas` · `GeoPandas` · `matplotlib` · `seaborn` · `Jupyter` · open government data
+
+![Per-capita crime rate maps, London vs West Mercia, same colour scale](outputs/report/comparison_maps.png)
+
+## Key findings
+
+- **London's crime rate is ~65% higher overall, but violent crime is the same.** Violence and sexual offences run at 33.2 per 1,000 residents in London vs 32.8 in West Mercia. The gap comes from crowd-driven crime: theft from the person is ~35× higher in London, and robbery ~5×.
+- **Raw counts mislead.** Westminster's rate of ~465 crimes per 1,000 residents reflects visitors, not residents. The City of London goes from the *lowest* borough by count to 8th-highest per resident.
+- **Deprivation tracks crime** (r ≈ 0.57 in London once the two outliers are set aside, r ≈ 0.69 in West Mercia). I checked this against the income-only measure too, because the headline deprivation index partly includes crime data itself.
+
+![Per-capita crime rate by type: London vs West Mercia](outputs/report/comparison_type_bar.png)
+
+**→ Full write-up with all charts and caveats: [REPORT.md](REPORT.md)**
+
+## What this project shows
+
+- **Joining several public datasets**: police.uk street-level crime, ONS population, the deprivation index (IMD 2019), and ONS boundary files
+- **Data cleaning with documented decisions**: anonymised records, crimes relocated outside the force area, missing locations, and council names that don't match between datasets
+- **Per-capita normalisation, outlier reasoning, and correlation**, including a check that the result doesn't depend on one measure
+- **Maps (choropleths)** with GeoPandas, including a shared colour scale so the two areas can be compared fairly
+- **Reusable code** in `src/` (loading and cleaning functions) that both force areas use
+- **Written communication**: a report with caveats, aimed at non-technical readers
+
+---
 
 ## Question we're starting with
 
