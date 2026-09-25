@@ -21,7 +21,7 @@ Two ways to do this — pick whichever you already have open:
 3. A terminal panel opens at the bottom. VS Code automatically starts it
    *inside* the project folder, so you don't need to type `cd` — you can
    check this by typing `pwd` and pressing Enter; it should print
-   `C:\Users\Maria\Downloads\samad\Study\data-projs`.
+   `C:\Users\Maria\Downloads\samad\Study\2_Data_Analytics_Projects\crime_data-projs`.
 
 **Option B — from the Windows Start menu:**
 1. Press the Windows key, type `powershell`, press Enter. This opens a
@@ -29,7 +29,7 @@ Two ways to do this — pick whichever you already have open:
    (`C:\Users\Maria`), not the project — so you need to navigate there:
 2. Type this and press Enter:
    ```powershell
-   cd "C:\Users\Maria\Downloads\samad\Study\data-projs"
+   cd "C:\Users\Maria\Downloads\samad\Study\2_Data_Analytics_Projects\crime_data-projs"
    ```
 3. Confirm it worked by typing `pwd` and pressing Enter — it should print
    that same path back to you.
@@ -51,7 +51,7 @@ Type this and press Enter:
 ```
 
 **What should happen:** your prompt changes to show `(.venv)` at the very
-start of the line, e.g. `(.venv) PS C:\Users\Maria\Downloads\samad\Study\data-projs>`.
+start of the line, e.g. `(.venv) PS C:\Users\Maria\Downloads\samad\Study\2_Data_Analytics_Projects\crime_data-projs>`.
 That prefix is your confirmation it worked — if you don't see it, the
 next step will likely fail (it'll use the wrong Python and probably say
 `jupyter` isn't recognized).
